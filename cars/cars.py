@@ -1,29 +1,80 @@
 import requests as req
 import sqlite3
-from csv import DictReader, DictWriter
 
 api_key = 'CNMOQfSRJZNwsQPmCY5Kzj7K6skjJ6MVf0H7iNH9'
 main_url = 'https://developers.ria.com/auto/'
-api_types = {
-    'search_api': 'search',
-    'info_api': 'info',
-    'avg_price_api': 'average_price',
-}
 
-url = main_url + 'categories/1/marks/55/models'
+###SQLite Start
+conn = sqlite3.connect('cars.db')
+c = conn.cursor()
+
+# c.execute('''CREATE TABLE search_cars
+#             (id INTEGER);''')
+
+c.execute('''INSERT INTO search_cars
+            VALUES (?);
+            ''', (25292615,))
+
+conn.commit()
+conn.close()
+###SQLite End
+
+"""
+def make_request(url, headers, params):
+    res = req.get(url, headers=headers, params=params)
+    data = res.json()
+    return data
+
+def search():
+    global api_key, main_url
+    url = main_url + 'search'
+    headers = {}
+    params = {
+    'api_key': api_key,
+    'category_id': 1,
+    'bodystyle[0]': 5,
+    'state[0]': 10,
+    'city[0]': 0,
+    's_yers[0]': 2010,
+    'price_do': 15000,
+    'currency': 1,
+    'type[0]': 1,
+    'type[1]': 2,
+    'gearbox[0]': 2,
+    'gearbox[1]': 3,
+    'gearbox[2]': 4,
+    'gearbox[3]': 5,
+    'abroad': 2,
+    'custom': 1,
+    'countpage': 100,
+    'page': 0
+    }
+
+    return make_request(url, headers, params)
+
+def info():
+    global api_key, main_url
+    url = main_url + 'info'
+    headers = {}
+    params = {
+    'api_key': api_key,
+    'auto_id': 25275604
+    }
+
+    return make_request(url, headers, params)
+
+def avg_price():
+    global api_key, main_url
+    url = main_url + 'average_price'
+    headers = {}
+    params = {}
+
+    return make_request(url, headers, params)
+
+"""
 
 
-headers = {}
-params = {'api_key': api_key}
 
-res = req.get(url, headers=headers, params=params)
-data = res.json()
 
-with open('models.csv', 'w') as file:
-    headers = ['name', 'value']
-    csv_writer = DictWriter(file, fieldnames=headers)
-    csv_writer.writeheader()
-    for r in data:
-        csv_writer.writerow(r)
 
 
