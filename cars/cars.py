@@ -13,11 +13,15 @@ def write_to_sqlite(data=None):
     c = conn.cursor()
 
     # c.execute('''CREATE TABLE cars_avg_prices
-    #             (mark TEXT, model TEXT, total INTEGER, arithmeticMean REAL, interQuartileMean REAL);''')
+    #             (mark TEXT, model TEXT, year INTEGER, region TEXT, total INTEGER, 
+    #           arithmeticMean REAL, interQuartileMean REAL, percentiles TEXT, prices TEXT,
+    #           classifieds TEXT );''')
 
     # c.execute('''INSERT INTO cars_avg_price
-    #             VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-    #             ''', ('Nissan', 'Qashqai', data['total'], data['arithmeticMean'], data['interQuartileMean'], str(data['percentiles']), str(data['prices']), str(data['classifieds'])))
+    #             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    #             ''', ('Nissan', 'Qashqai', 2010, Kiev, data['total'], data['arithmeticMean'], 
+    #                   data['interQuartileMean'], str(data['percentiles']), str(data['prices']),  
+    #                   str(data['classifieds'])))
 
     conn.commit()
     conn.close()
@@ -81,9 +85,6 @@ def avg_price():
         }
 
     return make_request(url, headers, params)
-
-
-write_to_sqlite()
 
 
 
