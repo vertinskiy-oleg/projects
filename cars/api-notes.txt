@@ -1,4 +1,4 @@
-Допустим Вы ищете:
+Search API:
 
 - Легковые машины (category_id=1)
 - Кузов (bodystyle[0]=3)
@@ -15,3 +15,41 @@
 - Количество результатов (countpage)
 - Авто не в Украине (abroad)
 - Нерастаможенные авто (custom)
+
+
+Марки & Модели
+
+Ford - 24
+ - Kuga - 2874
+Nissan - 55
+ - Qashqai - 2197
+ - X-Trail - 507
+Mitsubishi - 52
+ - ASX - 30805
+ - Outlander - 1485
+Honda - 28
+ - CR-V - 269
+Hyundai - 29
+ - IX35 - 3901
+ - Tucson - 1268
+ - Santa FE - 293
+Kia - 33
+ - Sportage - 327
+ - Sorento - 326
+Mazda - 47
+ - CX-5 - 37381
+Opel - 56
+ - Mokka - 42885
+Peugeot - 58
+ - 3008 - 32556
+Subaru - 75
+ - Forester - 663
+ - Outback - 1720
+ - XV - 38372
+Suzuki - 76
+ - Grand Vitara - 672
+Toyota - 79
+ - RAV4 - 715
+Volkswagen - 84
+ - Tiguan - 2692
+

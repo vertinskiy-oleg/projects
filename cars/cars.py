@@ -4,26 +4,29 @@ import sqlite3
 api_key = 'CNMOQfSRJZNwsQPmCY5Kzj7K6skjJ6MVf0H7iNH9'
 main_url = 'https://developers.ria.com/auto/'
 
-###SQLite Start
-conn = sqlite3.connect('cars.db')
-c = conn.cursor()
+years = [2010, 2011, 2012, 2013, 2014, 2015]
 
-# c.execute('''CREATE TABLE search_cars
-#             (id INTEGER);''')
 
-c.execute('''INSERT INTO search_cars
-            VALUES (?);
-            ''', (25292615,))
+def write_to_sqlite(data=None):
+    ###SQLite Start
+    conn = sqlite3.connect('cars.db')
+    c = conn.cursor()
 
-conn.commit()
-conn.close()
-###SQLite End
+    # c.execute('''CREATE TABLE cars_avg_prices
+    #             (mark TEXT, model TEXT, total INTEGER, arithmeticMean REAL, interQuartileMean REAL);''')
 
-"""
+    # c.execute('''INSERT INTO cars_avg_price
+    #             VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    #             ''', ('Nissan', 'Qashqai', data['total'], data['arithmeticMean'], data['interQuartileMean'], str(data['percentiles']), str(data['prices']), str(data['classifieds'])))
+
+    conn.commit()
+    conn.close()
+    ###SQLite End
+
 def make_request(url, headers, params):
     res = req.get(url, headers=headers, params=params)
     data = res.json()
-    return data
+    return write_to_sqlite(data)
 
 def search():
     global api_key, main_url
@@ -67,11 +70,20 @@ def avg_price():
     global api_key, main_url
     url = main_url + 'average_price'
     headers = {}
-    params = {}
+    params = {
+        'api_key': api_key,
+        'marka_id': 55,
+        'model_id': 2197,
+        'yers': 2010,
+        'state_id': 10,
+        'gear_id': 2,
+        'custom': 0
+        }
 
     return make_request(url, headers, params)
 
-"""
+
+write_to_sqlite()
 
 
 
