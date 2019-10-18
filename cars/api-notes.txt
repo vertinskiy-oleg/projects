@@ -40,8 +40,6 @@ Mazda - 47
  - CX-5 - 37381
 Opel - 56
  - Mokka - 42885
-Peugeot - 58
- - 3008 - 32556
 Subaru - 75
  - Forester - 663
  - Outback - 1720
