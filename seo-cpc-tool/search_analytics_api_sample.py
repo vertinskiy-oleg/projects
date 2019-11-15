@@ -1,17 +1,3 @@
-"""Example for using the Google Search Analytics API (part of Search Console API).
-A basic python command-line example that uses the searchAnalytics.query method
-of the Google Search Console API. This example demonstrates how to query Google
-search results data for your property. Learn more at
-https://developers.google.com/webmaster-tools/
-To use:
-1) Install the Google Python client library, as shown at https://developers.google.com/webmaster-tools/v3/libraries.
-2) Sign up for a new project in the Google APIs console at https://code.google.com/apis/console.
-3) Register the project to use OAuth2.0 for installed applications.
-4) Copy your client ID, client secret, and redirect URL into the client_secrets.json file included in this package.
-5) Run the app in the command-line as shown below.
-Sample usage:
-  $ python search_analytics_api_sample.py 'https://www.example.com/' '2015-05-01' '2015-05-30'
-"""
 from __future__ import print_function
 
 import argparse
