@@ -1,8 +1,4 @@
-# Add Server Response Status
-# Crawler for CTA blocks
-
 import scrapy
-import requests
 from time import sleep
 
 class LinksSpider(scrapy.Spider):
@@ -15,7 +11,7 @@ class LinksSpider(scrapy.Spider):
             yield response.follow(post_url, self.parse_post)
 
         ###Following second page. Need to change selector to ('a.next::attr(href)') to parse the next page.
-        next = response.css('.nav-links > a::attr(href)').get()
+        next = response.css('a.next::attr(href)').get()
         if next:
             sleep(2)
             yield response.follow(next, self.parse)
@@ -29,8 +25,7 @@ class LinksSpider(scrapy.Spider):
                 'post_url': response.url,
                 'link_url': response.urljoin(a.css('a::attr(href)').get()),
                 ###If for checking text in a tag (with span tag or without)
-                'link_text': a.css('a span::text').get() if a.css('a span::text') else a.css('a::text').get(),
-                'status code': requests.get(response.urljoin(a.css('a::attr(href)').get())).status_code
+                'link_text': a.css('a span::text').get() if a.css('a span::text') else a.css('a::text').get()
             }
 
         
