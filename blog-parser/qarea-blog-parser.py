@@ -11,10 +11,10 @@ class LinksSpider(scrapy.Spider):
             yield response.follow(post_url, self.parse_post)
 
         ###Following second page. Need to change selector to ('a.next::attr(href)') to parse the next page.
-        next = response.css('a.next::attr(href)').get()
-        if next:
-            sleep(2)
-            yield response.follow(next, self.parse)
+        # next = response.css('a.next::attr(href)').get()
+        # if next:
+        #     sleep(2)
+        #     yield response.follow(next, self.parse)
 
     ###Method for parsing posts
     def parse_post(self, response):
