@@ -1,3 +1,6 @@
+#Сделать таблицу с Страна - URL - Запрос with Ukraine & India
+#Add Ukraine & India to Countries table
+#Optimize functions with dict.copy() and diff function parameters
 from googleapiclient import sample_tools
 from gsheets import gsheets_write, gsheets_clear
 
@@ -300,16 +303,6 @@ def gsc_get_lp_urls_with_queries(start_date=START_DATE, end_date=END_DATE):
             {
             "filters": [
                 {
-                "dimension": "country",
-                "operator": "notContains",
-                "expression": "ukr"
-                },
-                {
-                "dimension": "country",
-                "operator": "notContains",
-                "expression": "ind"
-                },
-                {
                 "dimension": "page",
                 "operator": "notContains",
                 "expression": "blog"
@@ -345,16 +338,6 @@ def gsc_get_blog_urls_with_queries(start_date=START_DATE, end_date=END_DATE):
             {
             "filters": [
                 {
-                "dimension": "country",
-                "operator": "notContains",
-                "expression": "ukr"
-                },
-                {
-                "dimension": "country",
-                "operator": "notContains",
-                "expression": "ind"
-                },
-                {
                 "dimension": "page",
                 "operator": "contains",
                 "expression": "blog"
@@ -385,4 +368,4 @@ gsc_get_blog_urls()
 gsc_get_lp_countries()
 gsc_get_blog_countries()
 gsc_get_lp_urls_with_queries()
-gsc_get_blog_urls_with_queries()ы
+gsc_get_blog_urls_with_queries()
