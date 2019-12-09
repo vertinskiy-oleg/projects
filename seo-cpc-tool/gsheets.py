@@ -11,7 +11,7 @@ def gsheet_init():
 
 def gsheets_write(body, id=SPREADSHEET_ID, range=RANGE_NAME):
     s = gsheet_init()
-    s.values().update(
+    s.values().append(
         spreadsheetId=id, range=range,
         valueInputOption='RAW', body=body).execute()
 
