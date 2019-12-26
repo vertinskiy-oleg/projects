@@ -1,4 +1,5 @@
 #Make code refactoring
+#Add Page filter
 from googleapiclient import sample_tools
 from gsheets import gsheets_write, gsheets_clear
 import datetime
@@ -100,5 +101,5 @@ def main(url=qarea, year=2019, months=[1], limit=10,
             gsc_make_request(url, start_date, end_date, limit, dimensions, filters, sheet)
 
 
-main(url=testfort, year=2019, months=[1,2,3,4,5,6,7,8,9,10,11,12], limit=10, 
-    dimensions=['page'], filters=['no_blog'], sheet='Sheet1')
+main(url=testfort, year=2018, months=[9], limit=25000, 
+    dimensions=['query', 'page'], filters=['only_blog', 'no_ind', 'no_ukr'], sheet='Sep 2018')
