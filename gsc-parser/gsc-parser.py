@@ -20,7 +20,8 @@ def gsc_execute(body, url):
 
 #General function for requesting GSC with parameters
 # Dimensions: query, page, country, device, date
-# Filters: no_ukr, no_ind, no_blog, only_blog
+# Operators: contains, equals, notContains, notEquals
+# Filters: no_ukr, no_ind, no_blog, only_blog, only_urls
 def gsc_make_request(url, start_date, end_date, 
                     limit, dimensions, filters, sheet):
     
@@ -44,6 +45,11 @@ def gsc_make_request(url, start_date, end_date,
                 "dimension": "page",
                 "operator": "contains",
                 "expression": "blog"
+                },
+        'only_urls': {
+                "dimension": "page",
+                "operator": "contains",
+                "expression": "industries"
                 }
     }
     
@@ -101,5 +107,5 @@ def main(url=qarea, year=2019, months=[1], limit=10,
             gsc_make_request(url, start_date, end_date, limit, dimensions, filters, sheet)
 
 
-main(url=testfort, year=2018, months=[9], limit=25000, 
-    dimensions=['query', 'page'], filters=['only_blog', 'no_ind', 'no_ukr'], sheet='Sep 2018')
+main(url=qarea, year=2019, months=[11], limit=25000, 
+    dimensions=['query', 'page'], filters=['only_urls', 'no_ind', 'no_ukr'], sheet='Sheet15')
