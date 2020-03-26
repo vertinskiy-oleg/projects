@@ -3,10 +3,8 @@ from csv import writer
 from random import randint
 from time import sleep
 
-queries = ['photobook', 'photo album', 'game streaming', 'esports',
-           'radio', 'podcast player', 'print on demand', 'poster maker',
-           'fitness', 'wellness', 'calorie', 'news aggregator', 'reminders',
-           'to do', 'notes', 'time tracker']
+queries = ['messenger', 'chat', 'conference', 'cloud meeting',
+           'videochat', 'skype', 'viber', 'hangouts', 'slack']
 
 with open('apps.csv', 'w', encoding="utf-8", newline='') as f:
     csv_writer = writer(f)
