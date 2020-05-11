@@ -5,15 +5,15 @@ from time import sleep
 
 apps = []
 
-with open('apps.csv', 'r', encoding="utf-8") as f:
+with open('apps_list.csv', 'r', encoding="utf-8") as f:
     csv_reader = reader(f)
-    csv_reader.__next__()
     for row in csv_reader:
-        apps.append(row[1])
+        apps.append(row[0])
 
 with open('negative_reviews.csv', 'w', encoding="utf-8", newline='') as f:
     csv_writer = writer(f)
-    csv_writer.writerow(['App', 'Date', 'Review Content', 'Score', 'Thumbs Up', 'Reply Content'])
+    csv_writer.writerow(['App', 'Date', 'Review Content',
+                         'Score', 'Thumbs Up', 'Reply Content'])
 
 
 def get_bad_reviews(app):
@@ -29,7 +29,7 @@ def get_bad_reviews(app):
     with open('negative_reviews.csv', 'a', encoding="utf-8", newline='') as f:
         csv_writer = writer(f)
 
-        for review in app_reviews:
+        for review in app_reviews[0]:
             csv_writer.writerow([
                 app,
                 review['at'], review['content'],
@@ -43,6 +43,7 @@ for app in apps:
     try:
         get_bad_reviews(app)
     except Exception as e:
+        print(e, type(e))
         continue
     sleep_time = randint(0, 10)
     print(f'Sleeping for: {sleep_time}')

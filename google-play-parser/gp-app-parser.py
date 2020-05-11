@@ -3,8 +3,18 @@ from csv import writer
 from random import randint
 from time import sleep
 
-queries = ['messenger', 'chat', 'conference', 'cloud meeting',
-           'videochat', 'skype', 'viber', 'hangouts', 'slack']
+queries = ['radio', 'radio without internet', 
+            'online radio app', 'radio player app', 
+            'radio fm', 'iHeartRadio', 'WOUR', 'More FM', 
+            'Earbits', 'FM Cube', 'PCRADIO', 
+            'Pandora', 'AccuRadio', 'Dash Radio', 
+            'Deezer Music Player', 'Live365 Radio', 
+            'DI.FM', 'RadioTunes', 'Heart FM'
+            'Radionomy', 'Replaio', 'Simple Radio', 'Radio Italia',
+            'Radio Germany', 'Radio Philippines', 'Radioline',
+            'VRadio', 'Daily Tunes', 'SiriusXM', 'Spotify',
+            'Anchor', 'XiiaLive', 'Populardio', 'myTuner',
+            'radio.net']
 
 with open('apps.csv', 'w', encoding="utf-8", newline='') as f:
     csv_writer = writer(f)
